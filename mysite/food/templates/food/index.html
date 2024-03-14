@@ -1,3 +1,4 @@
+{% extends "food/base.html" %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,9 +7,22 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>This is just a template</h1>
-    {% for item in item_list %}
-        <h4><a href="{% url 'food:detail' item.id %}">{{ item.id }}: {{ item.item_name }}</a></h4>        
-    {% endfor %}
+    {% block body %}
+        {% for item in item_list %}
+            <div class="row">
+                <div class="col-md-3 offset-md-2">
+                    <img class="card-img" style="height: 150px;" src="{{ item.item_img }}">
+                </div>
+                <div class="col-md-4">
+                    <h3>{{ item.item_name }}</h3>
+                    <h5>{{ item.item_desc }}</h5>
+                    <h6>{{ item.item_price }}</h6>
+                </div>
+                <div class="col-md-2">
+                    <a href="{% url 'food:detail' item.id %}" class="btn btn-success">Details</a>
+                </div>
+            </div>      
+        {% endfor %}
+    {% endblock  %}
 </body>
 </html>
