@@ -1,5 +1,6 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
+from django.views.generic.list import ListView
 
 from .models import Item
 from .forms import ItemCreationForm
@@ -7,11 +8,16 @@ from .forms import ItemCreationForm
 # Create your views here.
 
 
-def index(request):
-    item_list = Item.objects.all()
-    return render(request, "food/index.html", {
-        "item_list": item_list,
-    })
+# def index(request):
+#     item_list = Item.objects.all()
+#     return render(request, "food/index.html", {
+#         "item_list": item_list,
+#     })
+
+class IndexClassView(ListView):
+    template_name = "food/index.html"
+    model = Item
+    context_object_name = "item_list"
 
 
 def item(request):
