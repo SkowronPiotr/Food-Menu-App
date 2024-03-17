@@ -6,9 +6,9 @@
             <img src="{{ item.item_img }}" alt="" class="card" style="height: 300px;">
         </div>
         <div class="col-md-6">
-            <h1>{{ item.item_name }}</h1>
-            <p>{{ item.item_desc }}</p>
-            <p>${{ item.item_price }}</p>
+            <h1>{{ object.item_name }}</h1>
+            <p>{{ object.item_desc }}</p>
+            <p>${{ object.item_price }}</p>
             <a href="{% url "food:delete-item" item.id %}">Delete</a>
         </div>
     </div>

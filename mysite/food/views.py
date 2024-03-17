@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.views.generic.list import ListView
+from django.views.generic.detail import DetailView
 
 from .models import Item
 from .forms import ItemCreationForm
@@ -24,11 +25,15 @@ def item(request):
     return HttpResponse("This is an item view")
 
 
-def detail(request, item_id):
-    item = Item.objects.get(pk=item_id)
-    return render(request, "food/detail.html", {
-        "item": item,
-    })
+# def detail(request, item_id):
+#     item = Item.objects.get(pk=item_id)
+#     return render(request, "food/detail.html", {
+#         "item": item,
+#     })
+
+class FoodDetail(DetailView):
+    template_name = "food/detail.html"
+    model = Item
 
 
 def create_item(request):
