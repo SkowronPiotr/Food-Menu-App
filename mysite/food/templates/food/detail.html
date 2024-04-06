@@ -9,7 +9,7 @@
             <h1>{{ object.item_name }}</h1>
             <p>{{ object.item_desc }}</p>
             <p>${{ object.item_price }}</p>
-            <a href="{% url "food:delete-item" item.id %}">Delete</a>
+            <a href="{% url "food:delete-item" item.id %}" class="btn btn-danger">Delete</a>
         </div>
     </div>
 </div>
